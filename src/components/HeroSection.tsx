@@ -48,14 +48,14 @@ const HeroSection = () => {
           {/* Controls */}
           <button
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 shadow-soft backdrop-blur-sm transition hover:bg-background"
+            className="absolute left-3 top-1/2 z-[5] -translate-y-1/2 rounded-full bg-background/80 p-2 shadow-soft backdrop-blur-sm transition hover:bg-background"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-4 w-4 text-foreground" />
           </button>
           <button
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 shadow-soft backdrop-blur-sm transition hover:bg-background"
+            className="absolute right-3 top-1/2 z-[5]-translate-y-1/2 rounded-full bg-background/80 p-2 shadow-soft backdrop-blur-sm transition hover:bg-background"
             aria-label="Next slide"
           >
             <ChevronRight className="h-4 w-4 text-foreground" />
