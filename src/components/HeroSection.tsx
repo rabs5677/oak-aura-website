@@ -35,6 +35,16 @@ const HeroSection = () => {
               }`}
             />
           ))}
+
+          {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/30 z-[1]"></div>
+
+            {/* Brand Name Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center z-[2] pointer-events-none">
+              <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-serif tracking-[0.25em] drop-shadow-lg">
+                Oak & Aura
+              </h1>
+            </div>
           {/* Controls */}
           <button
             onClick={prev}
