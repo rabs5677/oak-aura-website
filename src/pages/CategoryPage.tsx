@@ -37,21 +37,41 @@ const CategoryPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1">
-        <div className="section-padding py-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </Link>
 
-          <h1 className="heading-display mt-6">{category.name}</h1>
+      <main className="flex-1">
+
+        {/* TOP SECTION */}
+        <div className="section-padding py-8">
+
+          {/* Back Buttons */}
+          <div className="flex items-center gap-4 mb-6">
+
+            <Link
+              to="/#hero-slider"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Home
+            </Link>
+
+            <Link
+              to="/#categories"
+              state={{ scrollTo: "categories" }}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              ← Back to Categories
+            </Link>
+
+          </div>
+
+          {/* Heading */}
+          <h1 className="heading-display">{category.name}</h1>
+
           <p className="mt-2 text-muted-foreground">
             Explore our curated collection of premium {category.name.toLowerCase()}.
           </p>
 
+          {/* Products Grid */}
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => (
               <div
@@ -65,9 +85,13 @@ const CategoryPage = () => {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
+
                 <div className="p-4">
                   <h3 className="font-medium text-foreground">{product.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">Starting from {product.price}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Starting from {product.price}
+                  </p>
+
                   <Button asChild size="sm" variant="outline" className="mt-3 w-full">
                     <a
                       href={`https://wa.me/919076072584?text=Hi, I'm interested in ${product.name}`}
@@ -81,9 +105,12 @@ const CategoryPage = () => {
               </div>
             ))}
           </div>
+
         </div>
+
         <ConsultationSection />
       </main>
+
       <Footer />
     </div>
   );

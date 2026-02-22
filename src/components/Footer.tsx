@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
 
+
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-background">
@@ -19,7 +20,7 @@ const Footer = () => {
           <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 shrink-0" />
-              <a href="tel:9076072584" className="hover:text-foreground transition-colors">9076072584</a>
+              <a href="tel:9594594774" className="hover:text-foreground transition-colors">9594594774</a>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0" />
@@ -27,7 +28,7 @@ const Footer = () => {
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-              <span>Kurla, Mumbai</span>
+              <span>Kalina, Mumbai</span>
             </li>
           </ul>
         </div>
@@ -37,17 +38,28 @@ const Footer = () => {
           <h3 className="font-heading text-lg font-semibold text-foreground">Quick Links</h3>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <Link to="/" className="text-muted-foreground transition-colors hover:text-foreground">Home</Link>
-            </li>
-            <li>
-              <Link to="/about" className="text-muted-foreground transition-colors hover:text-foreground">About</Link>
-            </li>
-            <li>
-              <a href="/#categories" className="text-muted-foreground transition-colors hover:text-foreground">Our Work</a>
-            </li>
-            <li>
-              <a href="/#contact" className="text-muted-foreground transition-colors hover:text-foreground">Contact</a>
-            </li>
+          <Link to="/" state={{ scrollTo: "hero" }} className="hover:text-foreground transition-colors">
+          Home
+        </Link>
+          </li>
+
+          <li>
+            <Link to="/about" className="hover:text-foreground transition-colors">
+              About
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/our-work" className="hover:text-foreground transition-colors">
+              Our Work
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/" state={{ scrollTo: "contact" }} className="hover:text-foreground transition-colors">
+              Contact
+            </Link>
+          </li>
           </ul>
         </div>
       </div>

@@ -16,7 +16,7 @@ const ConsultationSection = () => {
             className="gap-2 bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90"
           >
             <a
-              href="https://wa.me/919076072584"
+              href="https://wa.me/919594594774?text=Hi, I'm interested in your furniture and would like to know more."
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -25,7 +25,7 @@ const ConsultationSection = () => {
             </a>
           </Button>
           <Button asChild size="lg" variant="outline" className="gap-2">
-            <a href="tel:9076072584">
+            <a href="tel:9594594774">
               <Phone className="h-5 w-5" />
               Call Now
             </a>

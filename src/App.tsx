@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import CategoryPage from "./pages/CategoryPage";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./ScrollToTop";
+import OurWork from "./pages/OurWork";
 
 const queryClient = new QueryClient();
 
@@ -16,11 +18,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+       <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/category/:slug" element={<CategoryPage />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/our-work" element={<OurWork />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

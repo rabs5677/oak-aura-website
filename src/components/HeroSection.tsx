@@ -21,7 +21,7 @@ const HeroSection = () => {
   const next = () => setCurrent((p) => (p + 1) % slides.length);
 
   return (
-    <section className="section-padding py-10 md:py-16">
+    <section id="hero" className="section-padding py-10 md:py-16">
       <div className="flex flex-col lg:flex-row gap-4 lg:h-[500px]">
         {/* Main slider - ~65% width */}
         <div className="relative flex-[2] overflow-hidden rounded-lg aspect-[4/3] lg:aspect-auto">
