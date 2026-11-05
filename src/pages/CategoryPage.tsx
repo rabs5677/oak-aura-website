@@ -7,10 +7,15 @@ import ConsultationSection from "@/components/ConsultationSection";
 import { Button } from "@/components/ui/button";
 
 // Sofa product images
-import sofa1 from "@/assets/product/sofa/sofa1.png";
-import sofa2 from "@/assets/product/sofa/sofa2.png";
-import sofa3 from "@/assets/product/sofa/sofa3.png";
-import sofa4 from "@/assets/product/sofa/sofa4.png";
+import sofa1 from "@/assets/products/sofa-images/sofa1.png";
+import sofa2 from "@/assets/products/sofa-images/sofa2.png";
+import sofa3 from "@/assets/products/sofa-images/sofa3.png";
+import sofa4 from "@/assets/products/sofa-images/sofa4.png";
+import sofa5 from "@/assets/products/sofa-images/sofa5.png";
+import sofa6 from "@/assets/products/sofa-images/sofa6.png";
+import sofa7 from "@/assets/products/sofa-images/sofa7.png";
+import sofa8 from "@/assets/products/sofa-images/sofa8.jpeg";
+import sofa9 from "@/assets/products/sofa-images/sofa9.jpeg";
 
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
