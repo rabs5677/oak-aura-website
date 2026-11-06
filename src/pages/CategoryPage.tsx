@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ConsultationSection from "@/components/ConsultationSection";
 import { Button } from "@/components/ui/button";
 
+// sofa images
 import sofa1 from "@/assets/products/sofa-images/sofa1.png";
 import sofa2 from "@/assets/products/sofa-images/sofa2.png";
 import sofa3 from "@/assets/products/sofa-images/sofa3.png";
@@ -16,6 +17,16 @@ import sofa6 from "@/assets/products/sofa-images/sofa6.png";
 import sofa7 from "@/assets/products/sofa-images/sofa7.png";
 import sofa8 from "@/assets/products/sofa-images/sofa8.jpeg";
 import sofa9 from "@/assets/products/sofa-images/sofa9.jpeg";
+
+//bed images
+import bed1 from "@/assets/products/bed-images/bed1.png";
+import bed2 from "@/assets/products/bed-images/bed2.png";
+import bed3 from "@/assets/products/bed-images/bed3.png";
+import bed4 from "@/assets/products/bed-images/bed4.png";
+import bed5 from "@/assets/products/bed-images/bed5.png";
+import bed6 from "@/assets/products/bed-images/bed6.png";
+import bed7 from "@/assets/products/bed-images/bed7.png";
+import bed8 from "@/assets/products/bed-images/bed8.png";
 
 type SelectedProduct = {
   name: string;
