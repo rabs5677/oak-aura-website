@@ -28,6 +28,17 @@ import bed6 from "@/assets/products/bed-images/bed6.png";
 import bed7 from "@/assets/products/bed-images/bed7.png";
 import bed8 from "@/assets/products/bed-images/bed8.png";
 
+// Wardrobe images
+import wardrobe1 from "@/assets/products/wardrobe-images/wardrobe1.png";
+import wardrobe2 from "@/assets/products/wardrobe-images/wardrobe2.png";
+import wardrobe3 from "@/assets/products/wardrobe-images/wardrobe3.png";
+import wardrobe4 from "@/assets/products/wardrobe-images/wardrobe4.png";
+
+// Dressing table images
+import dress1 from "@/assets/products/dressing-table-images/dress1.png";
+import dress2 from "@/assets/products/dressing-table-images/dress2.png";
+import dress3 from "@/assets/products/dressing-table-images/dress3.png";
+
 type SelectedProduct = {
   name: string;
   image: string;
@@ -35,20 +46,32 @@ type SelectedProduct = {
 
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
+
   const category = categories.find((c) => c.slug === slug);
 
   const [selectedProduct, setSelectedProduct] =
     useState<SelectedProduct | null>(null);
+
   const [zoom, setZoom] = useState(1);
 
-  const isSofaCategory = ["sofa", "sofas"].includes(
-    category?.slug ?? ""
-  );
+  // Identify the current category using its slug and name
+  const categoryIdentifier =
+    `${category?.slug ?? ""} ${category?.name ?? ""}`.toLowerCase();
 
-  const isBedCategory = ["bed", "beds"].includes(
-    category?.slug ?? ""
-  );
+  const isSofaCategory =
+    categoryIdentifier.includes("sofa");
 
+  const isBedCategory =
+    categoryIdentifier.includes("bed");
+
+  const isWardrobeCategory =
+    categoryIdentifier.includes("wardrobe");
+
+  const isDressingTableCategory =
+    categoryIdentifier.includes("dressing") ||
+    categoryIdentifier.includes("dresser");
+
+  // Close zoom viewer using Escape key
   useEffect(() => {
     if (!selectedProduct) return;
 
@@ -71,7 +94,9 @@ const CategoryPage = () => {
 
         <div className="flex flex-1 items-center justify-center">
           <div className="text-center">
-            <h1 className="heading-section">Category Not Found</h1>
+            <h1 className="heading-section">
+              Category Not Found
+            </h1>
 
             <Button asChild variant="outline" className="mt-4">
               <Link to="/">Go Home</Link>
@@ -109,22 +134,49 @@ const CategoryPage = () => {
     { id: 8, name: "Bed Design 8", price: "Price on request", image: bed8 },
   ];
 
+  // Wardrobe products
+  const wardrobeProducts = [
+    { id: 1, name: "Wardrobe Design 1", price: "Price on request", image: wardrobe1 },
+    { id: 2, name: "Wardrobe Design 2", price: "Price on request", image: wardrobe2 },
+    { id: 3, name: "Wardrobe Design 3", price: "Price on request", image: wardrobe3 },
+    { id: 4, name: "Wardrobe Design 4", price: "Price on request", image: wardrobe4 },
+  ];
+
+  // Dressing table products
+  const dressingTableProducts = [
+    { id: 1, name: "Dressing Table Design 1", price: "Price on request", image: dress1 },
+    { id: 2, name: "Dressing Table Design 2", price: "Price on request", image: dress2 },
+    { id: 3, name: "Dressing Table Design 3", price: "Price on request", image: dress3 },
+  ];
+
   // Select products according to category
   const products = isSofaCategory
     ? sofaProducts
     : isBedCategory
       ? bedProducts
-      : Array.from({ length: 8 }, (_, i) => ({
-          id: i + 1,
-          name: `${category.name} Design ${i + 1}`,
-          price: `₹${(15000 + i * 5000).toLocaleString("en-IN")}`,
-          image: category.image,
-        }));
+      : isWardrobeCategory
+        ? wardrobeProducts
+        : isDressingTableCategory
+          ? dressingTableProducts
+          : Array.from({ length: 8 }, (_, i) => ({
+              id: i + 1,
+              name: `${category.name} Design ${i + 1}`,
+              price: `₹${(15000 + i * 5000).toLocaleString("en-IN")}`,
+              image: category.image,
+            }));
 
+  // Close image viewer and reset zoom
   const closeImageViewer = () => {
     setSelectedProduct(null);
     setZoom(1);
   };
+
+  // Apply consistent image sizing to all four furniture categories
+  const useContainedImages =
+    isSofaCategory ||
+    isBedCategory ||
+    isWardrobeCategory ||
+    isDressingTableCategory;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -152,7 +204,9 @@ const CategoryPage = () => {
             </Link>
           </div>
 
-          <h1 className="heading-display">{category.name}</h1>
+          <h1 className="heading-display">
+            {category.name}
+          </h1>
 
           <p className="mt-2 text-muted-foreground">
             Explore our curated collection of premium{" "}
@@ -166,6 +220,7 @@ const CategoryPage = () => {
                 key={product.id}
                 className="group overflow-hidden rounded-lg border border-border bg-card transition-shadow hover:shadow-card"
               >
+                {/* Click image to open zoom viewer */}
                 <button
                   type="button"
                   onClick={() => {
@@ -182,7 +237,7 @@ const CategoryPage = () => {
                     src={product.image}
                     alt={product.name}
                     className={`h-full w-full transition-transform duration-500 ${
-                      isSofaCategory || isBedCategory
+                      useContainedImages
                         ? "object-contain p-3"
                         : "object-cover group-hover:scale-105"
                     }`}
@@ -193,6 +248,7 @@ const CategoryPage = () => {
                   </span>
                 </button>
 
+                {/* Product details */}
                 <div className="p-4">
                   <h3 className="font-medium text-foreground">
                     {product.name}
