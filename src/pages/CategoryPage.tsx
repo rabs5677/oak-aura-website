@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import ConsultationSection from "@/components/ConsultationSection";
 import { Button } from "@/components/ui/button";
 
-// sofa images
+// Sofa images
 import sofa1 from "@/assets/products/sofa-images/sofa1.png";
 import sofa2 from "@/assets/products/sofa-images/sofa2.png";
 import sofa3 from "@/assets/products/sofa-images/sofa3.png";
@@ -18,7 +18,7 @@ import sofa7 from "@/assets/products/sofa-images/sofa7.png";
 import sofa8 from "@/assets/products/sofa-images/sofa8.jpeg";
 import sofa9 from "@/assets/products/sofa-images/sofa9.jpeg";
 
-//bed images
+// Bed images
 import bed1 from "@/assets/products/bed-images/bed1.png";
 import bed2 from "@/assets/products/bed-images/bed2.png";
 import bed3 from "@/assets/products/bed-images/bed3.png";
@@ -45,6 +45,10 @@ const CategoryPage = () => {
     category?.slug ?? ""
   );
 
+  const isBedCategory = ["bed", "beds"].includes(
+    category?.slug ?? ""
+  );
+
   useEffect(() => {
     if (!selectedProduct) return;
 
@@ -56,6 +60,7 @@ const CategoryPage = () => {
     };
 
     window.addEventListener("keydown", handleKeyDown);
+
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedProduct]);
 
@@ -63,19 +68,23 @@ const CategoryPage = () => {
     return (
       <div className="flex min-h-screen flex-col">
         <Navbar />
+
         <div className="flex flex-1 items-center justify-center">
           <div className="text-center">
             <h1 className="heading-section">Category Not Found</h1>
+
             <Button asChild variant="outline" className="mt-4">
               <Link to="/">Go Home</Link>
             </Button>
           </div>
         </div>
+
         <Footer />
       </div>
     );
   }
 
+  // Sofa products
   const sofaProducts = [
     { id: 1, name: "Sofa Design 1", price: "₹35,000", image: sofa1 },
     { id: 2, name: "Sofa Design 2", price: "₹40,000", image: sofa2 },
@@ -88,14 +97,29 @@ const CategoryPage = () => {
     { id: 9, name: "Sofa Design 9", price: "Price on request", image: sofa9 },
   ];
 
+  // Bed products
+  const bedProducts = [
+    { id: 1, name: "Bed Design 1", price: "Price on request", image: bed1 },
+    { id: 2, name: "Bed Design 2", price: "Price on request", image: bed2 },
+    { id: 3, name: "Bed Design 3", price: "Price on request", image: bed3 },
+    { id: 4, name: "Bed Design 4", price: "Price on request", image: bed4 },
+    { id: 5, name: "Bed Design 5", price: "Price on request", image: bed5 },
+    { id: 6, name: "Bed Design 6", price: "Price on request", image: bed6 },
+    { id: 7, name: "Bed Design 7", price: "Price on request", image: bed7 },
+    { id: 8, name: "Bed Design 8", price: "Price on request", image: bed8 },
+  ];
+
+  // Select products according to category
   const products = isSofaCategory
     ? sofaProducts
-    : Array.from({ length: 8 }, (_, i) => ({
-        id: i + 1,
-        name: `${category.name} Design ${i + 1}`,
-        price: `₹${(15000 + i * 5000).toLocaleString("en-IN")}`,
-        image: category.image,
-      }));
+    : isBedCategory
+      ? bedProducts
+      : Array.from({ length: 8 }, (_, i) => ({
+          id: i + 1,
+          name: `${category.name} Design ${i + 1}`,
+          price: `₹${(15000 + i * 5000).toLocaleString("en-IN")}`,
+          image: category.image,
+        }));
 
   const closeImageViewer = () => {
     setSelectedProduct(null);
@@ -108,6 +132,8 @@ const CategoryPage = () => {
 
       <main className="flex-1">
         <div className="section-padding py-8">
+
+          {/* Navigation links */}
           <div className="mb-6 flex items-center gap-4">
             <Link
               to="/#hero"
@@ -133,6 +159,7 @@ const CategoryPage = () => {
             {category.name.toLowerCase()}.
           </p>
 
+          {/* Product grid */}
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => (
               <div
@@ -155,7 +182,7 @@ const CategoryPage = () => {
                     src={product.image}
                     alt={product.name}
                     className={`h-full w-full transition-transform duration-500 ${
-                      isSofaCategory
+                      isSofaCategory || isBedCategory
                         ? "object-contain p-3"
                         : "object-cover group-hover:scale-105"
                     }`}
@@ -202,6 +229,7 @@ const CategoryPage = () => {
 
       <Footer />
 
+      {/* Image zoom viewer */}
       {selectedProduct && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
@@ -215,6 +243,7 @@ const CategoryPage = () => {
             className="relative flex max-h-[95vh] w-full max-w-5xl flex-col items-center"
             onClick={(event) => event.stopPropagation()}
           >
+            {/* Close button */}
             <button
               type="button"
               onClick={closeImageViewer}
@@ -228,6 +257,7 @@ const CategoryPage = () => {
               {selectedProduct.name}
             </h2>
 
+            {/* Zoomable image */}
             <div className="flex max-h-[75vh] w-full items-center justify-center overflow-hidden rounded-lg bg-white">
               <img
                 src={selectedProduct.image}
@@ -238,6 +268,7 @@ const CategoryPage = () => {
               />
             </div>
 
+            {/* Zoom controls */}
             <div className="mt-5 flex items-center gap-5 rounded-full bg-white px-5 py-2 shadow-lg">
               <button
                 type="button"
