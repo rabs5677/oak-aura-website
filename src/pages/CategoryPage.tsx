@@ -35,9 +35,9 @@ import wardrobe3 from "@/assets/products/wardrobe-images/wardrobe3.png";
 import wardrobe4 from "@/assets/products/wardrobe-images/wardrobe4.png";
 
 // Dressing table images
-import dress1 from "@/assets/products/dressing-table-images/dress1.png";
-import dress2 from "@/assets/products/dressing-table-images/dress2.png";
-import dress3 from "@/assets/products/dressing-table-images/dress3.png";
+import dresst1 from "@/assets/products/dressing-table-images/dresst1.png";
+import dresst2 from "@/assets/products/dressing-table-images/dresst2.png";
+import dresst3 from "@/assets/products/dressing-table-images/dresst3.png";
 
 type SelectedProduct = {
   name: string;
@@ -144,9 +144,9 @@ const CategoryPage = () => {
 
   // Dressing table products
   const dressingTableProducts = [
-    { id: 1, name: "Dressing Table Design 1", price: "Price on request", image: dress1 },
-    { id: 2, name: "Dressing Table Design 2", price: "Price on request", image: dress2 },
-    { id: 3, name: "Dressing Table Design 3", price: "Price on request", image: dress3 },
+    { id: 1, name: "Dressing Table Design 1", price: "Price on request", image: dresst1 },
+    { id: 2, name: "Dressing Table Design 2", price: "Price on request", image: dresst2 },
+    { id: 3, name: "Dressing Table Design 3", price: "Price on request", image: dresst3 },
   ];
 
   // Select products according to category
